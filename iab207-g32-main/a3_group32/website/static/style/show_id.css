@@ -1,0 +1,195 @@
+/* Event Details - Styling */
+
+/* Disable hover effect for the card and image inside event-detail-card */
+.event-detail-card,
+.event-detail-card .event-image {
+    transition: none;
+    transform: none;
+    box-shadow: none;
+}
+
+.event-detail-card:hover,
+.event-detail-card .event-image:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Styling for Book Tickets Section */
+.book-tickets-section {
+    background-color: #f5f9fc;
+    border: 4px solid #007bff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Title styling for Book Tickets */
+.book-tickets-section h3 {
+    color: #0d6efd;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* Styling for the form inside Book Tickets */
+.book-tickets-section .form-group {
+    margin-bottom: 15px;
+}
+
+/* Submit button styling */
+.book-tickets-section .btn {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: 600;
+    padding: 10px 30px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.book-tickets-section .btn:hover {
+    background-color: #11c456;
+    color: #fff;
+}
+
+/* Container spacing */
+.book-tickets-section-container {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+/* Target the ticket input field specifically */
+.book-tickets-section-container input[type="number"] {
+    width: 150px;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Styling for Book Tickets Section */
+.book-tickets-section {
+    background-color: #f0f4ff;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Centered Content Area for Ticket Section */
+.ticket-content {
+    flex-grow: 1;
+    text-align: center;
+}
+
+/* Styling for Ticket Icons on Left and Right */
+.icon-left, .icon-right {
+    font-size: 9rem;
+    color: #007bff;
+    margin: 0 20px;
+}
+
+/* Additional Margin for Left Icon */
+.icon-left {
+    margin-right: 20px;
+}
+
+/* Additional Margin for Right Icon */
+.icon-right {
+    margin-left: 20px;
+}
+
+/* Styling for Comments Container */
+.comments-container {
+    background-color: #f9f9fc;
+    border: 1px solid #d1d1e0;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Comment Section Title Styling */
+.comments-section h3 {
+    color: #007bff;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Comment Form Styling */
+.comment-form {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+/* Individual Comment Box Styling */
+.comment-box {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Icon Styling within Comment Box */
+.icon-color {
+    color: #10b62c;
+}
+
+/* Comment Date Styling */
+.comment-date {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-top: 5px;
+}
+
+/* Comment Text Styling */
+.comment-box p {
+    margin: 10px 0 0;
+    color: #333333;
+}
+
+/* Styling for Comments Section */
+.comments-section h3 {
+    color: #007bff;
+    font-weight: bold;
+}
+
+/* Styling for the Add Your Comment label */
+.comments-section .form-label {
+    color: #007bff;
+    font-weight: bold;
+}
+
+/* Styling for comments title */
+.vibe-check-heading {
+    background-color: #d3d3e2;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    display: inline-block;
+    font-weight: bold;
+    margin: 0 auto;
+}
+
+
+/* Responsive adjustments for medium screens */
+@media (max-width: 768px) {
+    .book-tickets-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .icon-left, .icon-right {
+        font-size: 5rem;
+        margin: 10px 0;
+    }
+}
+
+/* Additional adjustments for small screens */
+@media (max-width: 480px) {
+    .icon-left, .icon-right {
+        font-size: 4rem;
+        margin: 5px 0;
+    }
+}

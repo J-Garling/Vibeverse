@@ -1,0 +1,286 @@
+/* 
+This file contains all the CSS styling for base.html - Used accross Pages of the Website.
+Consisting of general page, navbar, Jumbotron and footer custom styling and alignments. 
+*/
+
+/* ------------------------------- Page Styling ------------------------------- */
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Full height for html and body */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Push the footer to the bottom of the viewport when content is short */
+main {
+    flex: 1;
+}
+
+/* Color variables for the site */
+:root {
+    --primary-color: blueviolet;
+    --secondary-color: aqua;
+}
+
+/* Styling for VibeVerse Flash Messages */
+.flash-button {
+    background-color: transparent;
+    border: none;
+}
+
+.alert {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+  }
+
+.alert-success {
+    background-color: #28a745;
+    text-align: center;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.alert-error {
+    background-color: #dc3545;
+    text-align: center;
+    color: white;
+    border: 1px solid #dc3545;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+
+
+
+/* ------------------------------- Navbar Styling ------------------------------- */
+
+/* Navbar Menu styling - Text and positioning */
+.navbar-nav .nav-link {
+    font-size: 1.5rem;
+    color: white;
+    padding: 0.5rem 1rem;
+    margin: 0 20px;
+    transition: background-color 0s ease;
+}
+
+/* Font styling */
+body, .navbar {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar menu hover effect */
+.navbar-nav .nav-link:hover {
+    background-color: var(--primary-color);
+    border-radius: 20px;
+}
+
+/* Navbar logo alignment */
+.navbar-brand {
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+/* Logo image styling */
+.logo-img {
+    height: auto; 
+    width: 80px;  
+}
+
+/* Navbar collapse styling for larger screens */
+.navbar-collapse {
+    display: flex;
+    justify-content: center;
+}
+
+/* Search bar margin */
+.navbar .form-control {
+    margin-top: 17px;
+}
+
+/* Search button styling */
+.navbar .btn-outline-success {
+    color: white;
+    border-color: var(--primary-color);
+    margin-top: 17px;
+}
+
+
+.navbar .btn-outline-success:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Dropdown menu styling */
+.nav-item {
+    position: relative;
+}
+
+.dropdown-menu {
+    background-color: var(--primary-color);
+    border: 2px solid var(--secondary-color);
+    border-radius: 8px;
+    padding: 10px;
+    transform: translateY(10px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+}
+
+.nav-item:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Dropdown item styling */
+.dropdown-item {
+    color: white;
+    padding: 10px;
+}
+
+.dropdown-item:hover {
+    background-color: var(--secondary-color);
+    color: black;
+    border-radius: 15px;
+}
+
+/* Container styling for the welcome message */
+.navbar-text-container {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 5px 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+}
+
+/* Style for the welcome text */
+.welcome-text {
+    color: #e0e0e0;
+    font-weight: 500;
+}
+
+/* Logged in user icon size */
+.navbar-text-container i {
+    font-size: 1.2rem;
+}
+
+
+/* ------------------------------- Jumbotron (Hero Section) Styling ------------------------------- */
+
+/* Keyframe animation for fade-in effect for "Welcome to VibeVerse" */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Main heading to site */
+.jumbotron-hero h1 {
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Text below Welcome to Vibeverse */
+.jumbotron-hero p {
+    animation: fadeIn 2s ease-in-out;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+
+/* Main color scheme for the hero section */
+.primary-color {
+    color: white;
+}
+
+/* Make the 'i' in VibeVerse the primary color */
+.prime-letter {
+    color: var(--primary-color);
+}
+
+/* Hero section paragraph text styling */
+.jumbotron-hero p {
+    font-size: 2rem;
+}
+
+/* Background image and layout for the hero section */
+.jumbotron-hero {
+    background-image: url('../img/banner.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 45vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+/* Button within hero section */
+.jumbotron-hero .btn {
+    width: 200px;
+    padding: 12px 24px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Button hover effect */
+.jumbotron-hero .btn:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    box-shadow: 0px 10px 15px aqua;
+}
+
+/* ------------------------------- Footer Styling ------------------------------- */
+
+/* Footer background and shadow */
+.footer {
+    background: linear-gradient(135deg, #333a41, #717677);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-top: 4px solid var(--primary-color);
+    padding: 1rem 0;
+    margin-top: auto; /* Ensures footer stays at bottom if content is less */
+}
+
+/* Add padding to position links in footer */
+.useful-links, .about-vibeverse {
+    padding-top: 20px;
+}
+
+/* Footer link styling */
+.footer a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+/* Underline text links when hovered over */
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* Footer copyright section */
+.footer-copyright {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 15px 0;
+    width: 100%;
+    text-align: center;
+}

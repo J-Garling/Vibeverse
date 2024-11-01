@@ -1,0 +1,134 @@
+
+<!-- 
+index.hmtl
+
+The homepage of the website, extending off base.html. 
+
+This homepage captures the open events and displays them with the option to filter by category
+
+-->
+
+
+{% extends "base.html" %}
+
+<!-- Link index.css only for the index page -->
+{% block head %}
+    {{ super() }} 
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/show.events.css') }}">
+{% endblock %}
+
+<!-- Jumbotron block - Only used here for the Homepage of the website -->
+{% block jumbotron %}
+<div class="container-fluid jumbotron-hero">
+    <div class="row justify-content-center text-center">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <h1 class="display-1 display-md-3 display-sm-6">
+                <span class="primary-color">Welcome to </span><span class="primary-color">V</span><span class="prime-letter">i</span><span class="primary-color">beVerse</span>
+            </h1>
+            <p class="lead fs-4 fs-sm-6">Your gateway to live music and events</p>
+            <a href="{{ url_for('event.show_all') }}" class="btn">Discover Events</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<!-- Dynamic page title - Can be changed on other pages by using this -->
+{% block title %}Home - VibeVerse{% endblock %}
+
+{% block content %}
+<!-- Homepage Content Title and container to display events -->
+<div class="container">
+<div class="container title-container my-4">
+    <div class="row justify-content-center text-center">
+        <div class="col-lg-8 col-md-10 col-sm-12">
+            <h1><i class="fa fa-calendar-alt"></i> Open Events</h1>
+            <p class="subtitle-text">Explore the latest open events. Stay updated and never miss an event!</p>
+        </div>
+    </div>
+</div>
+
+    
+    <!-- Search by Category Dropdown with Container and Background -->
+<div class="container my-4">
+    <div class="search-container custom-width p-4">
+        <!-- Use route 'main.filter_events' and ensure the form submits a GET request -->
+        <form class="row justify-content-center align-items-center g-3" method="GET" action="{{ url_for('main.filter_events') }}">
+            <div class="col-auto">
+                <label for="categorySelect" class="col-form-label">
+                    Search by Category
+                    <i class="fa fa-search ms-1" aria-hidden="true"></i>
+                </label>
+            </div>
+            <div class="col-9 col-md-10 col-lg-10">
+                <!-- Dropdown for category selection -->
+                <select class="form-select" id="categorySelect" name="categorySelect">
+                    <option selected value="">Choose Your Vibe...</option>
+                    <option value="Concert">Concert</option>
+                    <option value="Festival">Festival</option>
+                    <option value="POP">POP</option>
+                    <option value="R&B">R&B</option>
+                    <option value="Country">Country</option>
+                    <option value="Alternative">Alternative</option>
+                </select>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-outline-primary">Filter</button>
+            </div>
+        </form>
+        
+        <!-- Category Badges Section -->
+        <div class="category-badges mt-3 text-center">
+            <a href="{{ url_for('main.filter_events', categorySelect='Concert') }}" class="badge bg-primary m-1 text-decoration-none">Concert</a>
+            <a href="{{ url_for('main.filter_events', categorySelect='Festival') }}" class="badge bg-secondary m-1 text-decoration-none">Festival</a>
+            <a href="{{ url_for('main.filter_events', categorySelect='POP') }}" class="badge bg-info m-1 text-decoration-none">POP</a>
+            <a href="{{ url_for('main.filter_events', categorySelect='R&B') }}" class="badge bg-warning m-1 text-decoration-none">R&B</a>
+            <a href="{{ url_for('main.filter_events', categorySelect='Country') }}" class="badge bg-dark m-1 text-decoration-none">Country</a>
+            <a href="{{ url_for('main.filter_events', categorySelect='Alternative') }}" class="badge bg-success m-1 text-decoration-none">Alternative</a>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- Event Cards display -->
+<div class="container-fluid">
+    <main class="container my-5">
+        <section class="mb-5">
+            <div class="row">
+                {% for event in events %}
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+                    <div class="card h-100">
+                        <img src="{{ event.image }}" class="card-img-top event-image" alt="Event Image">
+                        <div class="card-body">
+                            <!-- Display Event Name -->
+                            <h5 class="card-title">{{ event.name }}</h5>
+                            <!-- Display Event Date -->
+                            <p class="card-date text-muted">{{ event.date.strftime('%B %d, %Y') }}</p>
+                            <!-- Category and Status Display -->
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <p class="card-category text-muted mb-0">{{ event.category }}</p>
+                                <span class="badge bg-success">{{ event.status }}</span>
+                            </div>
+                            <!-- Display Event Description -->
+                            <p class="card-text">{{ event.description }}</p>
+                        </div>
+                        
+                        <!-- Footer with centered "View" button -->
+                        <div class="card-footer d-flex justify-content-center">
+                            <a href="{{ url_for('event.show', id=event.id) }}" class="btn btn-event-view">View</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+</div>
+
+
+
+
+</div>
+{% endblock %}

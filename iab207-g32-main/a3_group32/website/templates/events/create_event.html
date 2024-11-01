@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{{ super() }} 
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/create.event.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+{% endblock %}
+
+<!-- Dynamic page title - Can be changed on other pages by using this -->
+{% block title %}Create Event - VibeVerse{% endblock %}
+
+{% from 'bootstrap5/form.html' import render_form %}
+
+{% block content %}
+
+<!-- Create Your Event-->
+<div class="container my-4 title-container">
+  <h1><i class="fa fa-edit"></i> Create Your Event</h1>
+  <p class="subtitle-text">Fill out the form below to create your own event and share it with others. Include all the event details and fields, to create an unforgettable experience!</p>
+</div>
+
+<!-- Event Creation Section -->
+<div class="container px-3 my-5">
+  <div class="row align-items-start">
+    <!-- Event Form Section -->
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title text-center">
+                    <i class="fa fa-info-circle"></i> Event Details
+                </h2>
+                {{render_form(form)}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

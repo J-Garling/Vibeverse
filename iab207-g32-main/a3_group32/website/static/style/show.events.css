@@ -1,0 +1,232 @@
+:root {
+    --primary-color: blueviolet;
+    --secondary-color: aqua;
+}
+
+/* Set the background color for the entire page */
+body {
+    background-color: rgb(51, 15, 85);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* Headings within the main content */
+main h1, main h2, main h3, main h4 {
+    color: white;
+}
+
+/* Container styling for title */
+.container.my-4.title-container {
+    background-color: rgb(23, 0, 47);
+    padding: 10px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+}
+
+/* Subtitle text styling */
+.subtitle-text {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Title heading styling */
+h1 {
+    font-size: 2rem;
+    color: white;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* Main content section background */
+.container.px-3.my-5 {
+    background-color: var(--primary-color);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    padding: 20px 100px;
+    border-radius: 25px;
+    box-sizing: border-box;
+}
+
+/* ------------------------------- Main Event: Artist Section Styling ----------------------------------- */
+
+/* Event image styling */
+.event-image {
+    width: 100%;           
+    height: auto;         
+    object-fit: cover;      
+}
+
+/* Event details layout */
+.event-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Info section for event details */
+.event-info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+    padding: 5px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.event-label {
+    min-width: 100px;
+    font-weight: bold;
+    color: #333;
+}
+
+.event-value {
+    color: #666;
+    font-size: 1rem;
+}
+
+/* Add padding below "Book Your Tickets" */
+.card-title {
+    font-weight: bold;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+}
+
+/* Subtle card hover effect */
+.card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling for the "View" button in event cards */
+.btn-event-view {
+    background-color: var(--primary-color); /* Set your custom color */
+    color: #fff;
+    border: none;
+    transition: background-color 0.3s, transform 0.3s;
+    width: 100%;
+}
+
+.btn-event-view:hover {
+    background-color: var(--secondary-color);
+    color: #020202;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* ------------------------------- Comments Section Styling ------------------------------- */
+
+/* Layout for comments section */
+.comments-section {
+    margin-top: 10px;
+}
+
+/* Label styling for 'Add Your Comment' */
+.comments-section .form-label {
+    color: white;
+    font-weight: bold;
+}
+
+/* Comment box styling */
+.comment-box {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect on comment box */
+.comment-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Strong text inside the comment box */
+.comment-box strong {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+/* Comment text and date styling */
+.comment-box p {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.comment-date {
+    font-size: 0.85rem;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+/* Comment form styling */
+#commentForm {
+    margin-top: 20px;
+}
+
+#commentForm textarea {
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 1rem;
+}
+
+/* Layout for book-tickets section */
+.book-tickets-section {
+    margin-top: 40px;
+}
+
+/* Layout for comments section */
+.open-events-section {
+    margin-top: 2px;
+}
+
+.not-open-events-section {
+    margin-top: 20px;
+}
+
+/* Card image styling */
+.card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* ------------------------------- Booking History Styling ------------------------------- */
+/* Order history table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th, td {
+    border: 1px solid;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: blueviolet;
+    color: white;
+  }
+
+  td {
+    background-color: white;
+    color: black
+  }

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }} 
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/show.events.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+{% endblock %}
+{% block title %}Booking History{% endblock %}
+
+
+{% block content %}
+
+<!-- Event Details Title: Adjusted to sit between Navbar and Main -->
+<div class="container my-4 title-container">
+  <h1><i class="fa fa-microphone"></i> Order History</h1>
+  <p class="subtitle-text">Refer to the table below for confirmation of previosuly ordered tickets.</p>
+</div>
+ 
+  <table>
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Event ID</th>
+        <th>Order Date</th>
+        <th>Number of Tickets Ordered</th>
+        <th>Price per Ticket</th>
+        <th>Total Amount</th>
+        <th>Confirmed</th>
+      </tr>
+    </thead>
+
+    {% for order in orders %}
+      <tr>
+        <td>{{ order.id }}</td>
+        <td>{{ order.event_id }}</td>
+        <td>{{ order.order_date }}</td>
+        <td>{{ order.ticket_quantity }}</td>
+        <td>${{ order.price_per_ticket }}</td>
+        <td>${{ order.total_amount }}</td>
+        <td>Y</td>
+      </tr>
+      {% endfor %}
+  </table>
+
+</body>
+
+
+{% endblock %}

@@ -1,0 +1,154 @@
+/* ------------------------------- Create Event Section Styling ----------------------------------- */
+/* ------------------Elements copied over from A2 styling sheet and elements addedv----------------- */
+
+:root {
+    --primary-color: blueviolet;
+    --secondary-color: aqua;
+}
+
+/* Set the background color for the entire page */
+body {
+    background-color: rgb(51, 15, 85);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* Container for title section */
+.container.my-4.title-container {
+    background-color: rgb(23, 0, 47);
+    padding: 15px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+}
+
+/* Title heading styling */
+h1 {
+    font-size: 2rem;
+    color: white;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* Subtitle text styling */
+.subtitle-text {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Main content section background */
+.container.px-3.my-5 {
+    background-color: var(--primary-color);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    padding: 20px 100px;
+    border-radius: 25px;
+    box-sizing: border-box;
+}
+
+.inputField:hover {
+    border-color: var(--primary-color);
+}
+
+/* Style the form-group to control hover and focus as a group */
+.form-group {
+    position: relative;
+    padding: 2px; 
+    border: 3px solid transparent; 
+    border-radius: 14px; 
+    transition: border-color 0.3s ease;
+}
+
+/* When hovering over the form-group, change the border color */
+.form-group:hover,
+.form-group:focus-within {
+    border-color: blueviolet; 
+    
+}
+
+/* Style all form labels */
+.form-label {
+    font-weight: bold;         
+    color: blueviolet;            
+    font-size: 0.8rem;            
+    letter-spacing: 0.5px;      
+    text-transform: uppercase;  
+    margin-bottom: 0px;         
+
+    /* Background styling */
+    background-color: rgb(231, 228, 233);
+    padding: 5px 10px;   
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px; 
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: 1px solid transparent; 
+    border-bottom: none; 
+}
+
+/* Style all input boxes */
+.form-control {
+    border-bottom-left-radius: 10px; 
+    border-bottom-right-radius: 10px; 
+    border-top-left-radius: 0px; 
+    border-top-right-radius: 0px; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+    outline: none !important;
+}
+
+/* Add a custom border color for focus state */
+.form-group:focus-within {
+    border-color: blueviolet; 
+}
+
+/* Styling for the Create Event button */
+.btn-create-event {
+    background-color: blueviolet; 
+    color: white; 
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px; 
+    font-size: 1.2rem;
+    font-weight: bold; 
+    transition: background-color 0.3s ease; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect for Create Event button */
+.btn-create-event:hover {
+    background-color: aqua;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling for the Add Another Ticket Type button */
+.btn-add-ticket {
+    background-color: transparent;
+    color: blueviolet;
+    border: 2px solid blueviolet;
+    padding: 8px 16px; 
+    border-radius: 8px; 
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+/* Hover effect for Add Another Ticket Type button */
+.btn-add-ticket:hover {
+    background-color: rgba(137, 43, 226, 0.5); 
+    color: white; 
+    border-color: darkviolet;
+}
+

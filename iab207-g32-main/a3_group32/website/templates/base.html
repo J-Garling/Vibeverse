@@ -1,0 +1,220 @@
+<!-- 
+ base.html:
+
+ Is used across the website's pages as a base template using Jinja for its inheritance properties to provide a consistant layout structure.
+
+ Dynamic code blocks like the title, jumbotron, and content are defined here and can be overridden by specific pages.
+
+ Utilising Bootstrap for styling and responsiveness.
+
+ Icons used through Font Awesome and Poppins font for typography are loaded here. 
+ 
+-->
+
+<html>
+
+    <!--
+    Head section - loads required imports for the websites reponsiveness, typography, icons, and custom styling.
+    -->
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Dynamic page title - Can be changed on other pages by using this -->
+        <title>{% block title %}VibeVerse{% endblock %}</title>
+
+        <!-- Bootstrap CSS for styling and responsiveness -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+        
+        <!-- Poppins Font from Google Fonts - for consistent typography accross the site -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+        
+        <!-- Font Awesome for icons used accross the site -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+        <!-- CSS file used for base.html styling -->
+        <link href="{{ url_for('static', filename='style/base.css') }}" rel="stylesheet">
+
+        <!-- Place holder for additional page-specific CSS -->
+        {% block head %}{% endblock %}
+
+    </head>
+
+    <body>
+        <!-- Header -->
+        <header class="bg-dark border-bottom">
+            
+            <!-- Navbar Section -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid">
+
+                    <!-- VibeVerse Logo aligned to the far left -->
+                    <a href="{{ url_for('main.index') }}" class="navbar-brand logo-only" aria-label="VibeVerse Logo">
+                        <img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="VibeVerse Logo" class="logo-img">
+                    </a>
+                    
+                    <!-- Username and Logout Link if logged in -->
+                    {% if current_user.is_authenticated %}
+                    <div class="navbar-text-container ms-3 d-flex align-items-center">
+                        <i class="fas fa-headphones text-success me-2"></i>  <!-- Green icon before "Welcome" -->
+                        <span class="welcome-text">Welcome, {{ current_user.name }}</span>
+                        <a href="{{ url_for('auth.logout') }}" class="btn btn-link text-white ms-3">Logout</a>
+                    </div>
+                    {% endif %}
+
+
+
+                    <!-- Toggle button for small viewports using hamburger icon -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <!-- Navbar Links and Dropdown Menus -->
+                    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                        <ul class="navbar-nav mb-2 mb-lg-0">
+
+                            <!-- Dropdown: Unleash The Beats -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">Unleash The Beats</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="{{ url_for('event.show_all') }}">Browse All Events</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('event.create') }}">Create Events</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('event.created_events') }}">Your Created Events</a></li>
+                                </ul>
+                            </li>
+
+                            <!-- Dropdown: Tickets -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">Tickets</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="{{ url_for('event.order_history') }}">Booking History</a></li>
+                                    <li><a class="dropdown-item" href="#">Coming Soon</a></li>
+                                </ul>
+                            </li>
+
+                            <!-- Login Link -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
+                            </li>
+
+                            <!-- Dropdown: Help -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">Help</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#">Contact Us</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('auth.login') }}">Login</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('auth.logout') }}">Logout</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('auth.register') }}">Register</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                    <!-- Search Form aligned to the far right on large viewports -->
+                    <div class="d-none d-lg-flex col-lg-auto ms-auto pe-0 justify-content-end">
+                        <form class="d-flex align-items-center pe-0" action="{{ url_for('main.search') }}">
+                            <input class="form-control me-2" id="SearchForm" type="text" name ="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
+
+
+                    <!-- Search Form inside the burger menu for small viewports -->
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <form class="d-lg-none mt-3 w-100 d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                    
+                </div>
+            </nav>
+
+
+
+            <!-- Flash messages block -->
+            <div class="container">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    <button type="button" class="close flash-button" data-dismiss="alert" aria-label="close">x</button>
+                    {{ message }}
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+            </div>
+            
+            <!-- Jumbotron - for Homepage (index.html) but not used on other pages -->
+            {% block jumbotron %}
+            {% endblock %}
+
+        </header>
+
+        <!-- Main Block for dynamic content changed accross pages being rendered -->
+        <main class="container my-5">
+            {% block content %}
+            {% endblock %}
+        </main>
+
+        <!-- Footer Section -->
+        <footer class="footer text-white text-center text-lg-start bg-dark py-4">
+            <div class="container">
+                <div class="row">
+                    <!-- Useful Links Section -->
+                    <div class="col-lg-4 col-md-6 useful-links text-start mb-4 mb-lg-0">
+                        <h5 class="text-uppercase">Useful Links</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="{{ url_for('event.show_all') }}" class="text-white">Browse Events</a></li>
+                            <li><a href="{{ url_for('event.order_history') }}" class="text-white">Tickets</a></li>
+                            <li><a href="{{ url_for('event.create') }}" class="text-white">Create Event</a></li>
+
+                            <!-- NOT USED YET - ( For future pages )-->
+                            <li><a href="#" class="text-white">Venues</a></li>
+                            <li><a href="#" class="text-white">Contact Us</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- About VibeVerse Section - Display a short message about Vibeverse -->
+                    <div class="col-lg-4 col-md-6 about-vibeverse text-center mb-4 mb-lg-0">
+                        <h5 class="text-uppercase">About ViBEVERSE</h5>
+                        <p>VibeVerse brings the latest music events to your fingertips. Discover live performances, book tickets, and vibe with the best artists around.</p>
+                    </div>
+
+                    <!-- Empty space for layout balancing -->
+                    <div class="col-lg-4 col-md-6"></div>
+                </div>
+            </div>
+
+            <!-- Copyright Section -->
+            <div class="text-center mt-3">
+                © 2024 Copyright:
+                <a class="text-white" href="#">ViBEVERSE</a>
+            </div>
+
+            <!-- Logo -->
+            <div class="text-center mt-3">
+                <a href="{{ url_for('main.index') }}" aria-label="VibeVerse Logo">
+                    <img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="VibeVerse Logo" class="logo-img" style="width: 100px;">
+                </a>
+            </div>
+        </footer>
+
+        <!-- 
+        Bootstrap JavaScript for interactive components - used for dropdown and burger menus.
+        Placed at the bottom to allow page content to load before any scripts run, to improve load times.
+        -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" 
+                integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" 
+                crossorigin="anonymous">
+        </script>
+    </body>
+
+</html>

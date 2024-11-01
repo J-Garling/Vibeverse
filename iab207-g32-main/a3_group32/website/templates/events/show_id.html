@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{{ super() }} 
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/show.events.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/show_id.css') }}">
+{% endblock %}
+
+<!-- Dynamic page title - Can be changed on other pages by using this -->
+{% block title %}Event Details - VibeVerse{% endblock %}
+
+{% from 'bootstrap5/form.html' import render_form %}
+
+{% block content %}
+
+<!-- Event Details Title: Adjusted to sit between Navbar and Main -->
+<div class="container my-4 title-container">
+  <h1><i class="fa fa-microphone"></i> Event Details</h1>
+  <p class="subtitle-text">Discover all the details about this exciting event, including booking information and more!</p>
+</div>
+
+<!-- Event Details Section -->
+<div class="container px-3 my-5">
+<div class="row">
+    <!-- Event Image and Details -->
+    <div class="col-lg-12">
+        <div class="card event-detail-card">
+            <img src="{{event.image}}" class="card event-image" alt="Event Image">
+            <div class="card-body">
+                <h2 class="card-title">{{event.name}}</h2>
+                <p class="card-text">{{event.description}}</p>
+                
+                <!-- Event Information -->
+                <div class="event-details">
+                    <div class="event-info">
+                        <span class="event-label"><strong>Status:</strong></span>
+                        <span class="event-value">{{event.status}}</span>
+                    </div>
+                    <div class="event-info">
+                        <span class="event-label"><strong>Category:</strong></span>
+                        <span class="event-value">{{event.category}}</span>
+                    </div>
+                    <div class="event-info">
+                        <span class="event-label"><strong>Date:</strong></span>
+                        <span class="event-value">{{event.date}}</span>
+                    </div>
+                    <div class="event-info">
+                        <span class="event-label"><strong>Start Time:</strong></span>
+                        <span class="event-value">{{event.start_time}}</span>
+                    </div>
+                    <div class="event-info">
+                        <span class="event-label"><strong>End Time:</strong></span>
+                        <span class="event-value">{{event.end_time}}</span>
+                    </div>
+                    <div class="event-info">
+                        <span class="event-label"><strong>Venue:</strong></span>
+                        <span class="event-value">{{event.venue}}</span>
+                    </div>
+                    <div class="event-info">
+                        <span class="event-label"><strong>Ticket Price:</strong></span>
+                        <span class="event-value">${{event.price_per_ticket}}</span>
+                    </div>
+                </div>   
+            </div>
+        </div>
+    </div>
+</row>
+
+
+    <!-- Book Tickets Section -->
+    <row>
+        <div class="book-tickets-section-container">
+            <section class="book-tickets-section d-flex align-items-center justify-content-between">
+                <div class="icon-left">
+                    <i class="fas fa-ticket-alt"></i>
+                </div>
+                <div class="ticket-content text-center">
+                    <h3 class="mb-4">Book Tickets</h3>
+                    <div class="mb-3">
+                        {{ render_form(form2, "/events/{0}/order".format(event.id)) }}
+                    </div>
+                </div>
+                <div class="icon-right">
+                    <i class="fas fa-ticket-alt"></i>
+                </div>
+            </section>
+        </div>
+    </row>   
+
+    <!-- Comments Section -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="comments-container">
+                <section class="comments-section my-5">
+                    <h3 class="vibe-check-heading text-center mb-4">
+                        Vibe Check <i class="fa fa-microphone"></i>
+                    </h3>
+                    
+                    <!-- Post a Comment -->
+                    <div class="mb-3">
+                        <label for="comment" class="form-label">Share Your Excitement!</label>
+                        {{render_form(form,"/events/{0}/comment".format(event.id))}}
+                    </div>
+                    
+                    {% for comment in comments %}
+                        <!-- Existing Comments -->
+                        <div class="comment-box">
+                            <strong><i class="fa fa-comments icon-color"></i>{{comment.user.name}}</strong>
+                            <p class="comment-date text-muted">Posted on {{ comment.created_at }}</p>
+                            <p>{{ comment.text }}</p>
+                        </div>
+                    {% endfor %}
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
